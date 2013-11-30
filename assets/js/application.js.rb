@@ -1,4 +1,5 @@
 require 'opal'
+require 'opal-parser'
 require 'browser'
 require 'browser/socket'
 require 'browser/storage'
@@ -77,6 +78,10 @@ class Chat
       send_message handle, text
       message_input.value = ''
     end
+
+    robot.on :speak do |text|
+      send_message "#{handle} (bot)", text
+    end if robot
   end
 
   attr_reader :element, :scheme, :messages, :message, :host, :message_input, :scheme
@@ -98,6 +103,7 @@ class Chat
 
   def << message
     message[:time] = Time.now
+    robot.hear message if robot
     store_message message
     display_message message
   end
