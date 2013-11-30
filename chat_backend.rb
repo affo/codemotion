@@ -26,7 +26,7 @@ module ChatDemo
 
         ws.on :message do |event|
           p [:message, event.data]
-          @clients.each {|client| client.send(event.data) }
+          send_all event.data
         end
 
         ws.on :close do |event|

@@ -59,6 +59,8 @@ class Chat
   COLORS = %w[red green blue orange]
 
   def initialize element
+    #p handle
+    #element.at_css("#handle").text handle
     @element  = element
     @scheme   = element.get('data-scheme')
     @messages = element.at_css('.messages')
@@ -79,9 +81,6 @@ class Chat
       message_input.value = ''
     end
 
-    robot.on :speak do |text|
-      send_message "#{handle} (bot)", text
-    end if robot
   end
 
   attr_reader :element, :scheme, :messages, :message, :host, :message_input, :scheme
@@ -103,7 +102,6 @@ class Chat
 
   def << message
     message[:time] = Time.now
-    robot.hear message if robot
     store_message message
     display_message message
   end

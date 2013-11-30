@@ -10,9 +10,6 @@
     .chat-app(class="container" data-scheme=scheme)
       %header(class="page-header")
         %h1
-          \#codemotion
-          %small
-            ruby lab chat
           -# %form.inline-form
           -#   %input.handle(name="handle" placeholder="Enter handle" type="text" autofocus class="form-control")
       .row(style="margin-bottom:1em")
@@ -24,17 +21,9 @@
         %form.message
           .col-xs-10
             .input-group
-              %span.handle(class="input-group-addon") elia:
+              %span.handle(class="input-group-addon" id="handle")
               %input.text(name="text" placeholder="Enter chat text here!" type="text" autofocus class="form-control")/
           .col-xs-2
-            %button.submit(type="submit" class="btn btn-primary" style="width:100%") Send ⏎
-
-
-    %form.robot
-      .col-xs-10
-        .input-group
-          %textarea.code(placeholder="Enter robo-code here!" class="form-control")/
-      .col-xs-2
-        %button.submit(type="submit" class="btn btn-primary" style="width:100%") Update ⏎
+            %button.submit(type="submit" class="btn btn-primary" style="width:100%") Send
 
     %script(src="assets/application.js" type="text/javascript")
